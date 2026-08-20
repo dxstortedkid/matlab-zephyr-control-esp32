@@ -1,12 +1,26 @@
-#
-# Copyright (c) 2019 Nordic Semiconductor ASA
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
+# Minimum CMake version required by Zephyr RTOS
 cmake_minimum_required(VERSION 3.20.0)
-find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
-project(mpu6050)
 
-FILE(GLOB app_sources src/*.c)
-target_sources(app PRIVATE ${app_sources})
+# Locate and import the Zephyr build system
+find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
+
+# Define project name
+project(gyrocube)
+
+# Generate compile_commands.json for IDE support and language servers (clangd, VS Code, etc.)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Private include directories for application modules
+target_include_directories(app PRIVATE
+    modules
+)
+
+# Application source files
+target_sources(app PRIVATE
+    src/main.cpp
+    modules/LowPassFilter/LowPassFilter.cpp
+    modules/SimplePid/SimplePid.cpp
+    modules/mpu6050/mpu6050.cpp
+    modules/ComplementaryFilter/ComplementaryFilter.cpp
+    modules/MatlabLink/MatlabLink.cpp
+)

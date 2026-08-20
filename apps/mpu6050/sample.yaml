@@ -1,15 +1,12 @@
-#
-# Copyright (c) 2019 Nordic Semiconductor ASA
-#
-# SPDX-License-Identifier: Apache-2.0
-#
-
 sample:
-  name: MPU6050 Sensor Sample
+  name: mpu6050
 tests:
   sample.sensor.mpu6050:
-    build_only: true
-    platform_allow: nrf52dk/nrf52832
-    tags: sensors
+    tags:
+      - sensors
+      - i2c
+      - cpp
+    filter: dt_compat_enabled("invensense,mpu6050")
+    depends_on: i2c
     integration_platforms:
-      - nrf52dk/nrf52832
+      - esp32c3_supermini

@@ -1,3 +1,4 @@
 {
-    "terminal.integrated.defaultProfile.linux": "Zephyr IDE Terminal"
+    "terminal.integrated.defaultProfile.linux": "Zephyr IDE Terminal",
+    "cmake.sourceDirectory": "/home/chromatedkid/Code/matlab-zephyr-control-esp32/apps/mpu6050"
 }

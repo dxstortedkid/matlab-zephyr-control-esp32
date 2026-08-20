@@ -14,4 +14,4 @@ manifest:
           - cmsis_6
           - picolibc
           - segger
-          - hal_rpi_pico
+          - hal_espressif
